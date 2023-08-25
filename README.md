@@ -35,4 +35,5 @@
 7.  Android uses ```192.168.42.100``` as master IP.
 
 # **Note :**
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This method doesn't allow internet sharing from a PC to a tablet.
+1.  This method doesn't allow internet sharing from a PC to a tablet.
+2.  Remove any ```.rules``` files having same productId and vendorId of the Android USB connection.
