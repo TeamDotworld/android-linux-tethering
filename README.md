@@ -8,7 +8,7 @@
 
 3.  Plug the Android Alcatel tab using USB Cable and make sure linux is connected to the internet.
 
-4.  Run ```sudo ./install.sh -i```.
+4.  Run ```sudo ./install.sh -i```
 
 5.  The script will request the vendorId and productId of the Android USB connection. You can find it in the script log or by entering the lsusb command in a different terminal tab.
 
@@ -33,3 +33,6 @@
 6.  If the Android tablet is disconnected and connected again, the service runs the same as before.
 
 7.  Android uses ```192.168.42.100``` as master IP.
+
+# **Note :**
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This method doesn't allow internet sharing from a PC to a tablet.
