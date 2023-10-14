@@ -59,22 +59,25 @@ install(){
         echo \"No devices found.\"
     else
         for device in \$devices; do
-            echo
-            echo \$device
-            current_mode=\$(adb -s \$device shell svc usb getFunctions 2>&1)
-            echo Current Mode: \$current_mode
-            if [[ \"\$current_mode\" == \"rndis\" ]]; then
-                echo Already in rndis Mode. Checking IP
-                if check_ip_address \"\$ip\"; then
-                    echo \"Device already has an IP address\"
+            if [[ \"\$device\" == \"device\" ]]; then
+                echo
+            else 
+                echo \"device \$device\"
+                current_mode=\$(adb -s \$device shell svc usb getFunctions 2>&1)
+                echo Current Mode: \$current_mode
+                if [[ \"\$current_mode\" == \"rndis\" ]]; then
+                    echo Already in rndis Mode. Checking IP
+                    if check_ip_address \"\$ip\"; then
+                        echo \"Device already has an IP address\"
+                    else
+                        echo \"Need to set IP. Proceeding...\"
+                        set_ip_address \"\$ip\" \"\$gateway\"
+                    fi
                 else
-                    echo \"Need to set IP. Proceeding...\"
-                    set_ip_address \"\$ip\" \"\$gateway\"
+                    echo Not in rndis Mode. Proceeding to enable rndis mode
+                    set_usb_mode \"\$device\"
+                    echo Enabled rndis Mode.
                 fi
-            else
-                echo Not in rndis Mode. Proceeding to enable rndis mode
-                set_usb_mode \"\$device\"
-                echo Enabled rndis Mode.
             fi
         done
     fi
@@ -93,7 +96,7 @@ install(){
     echo "check_ip_address() {
     ip=\"\$1\"
     # Check if the device has an IP address
-    adb_output=\$(ip -f inet addr show rndis 2>/dev/null)
+    adb_output=\$(ip -f inet addr show android_rndis 2>/dev/null)
     if [[ \"\$adb_output\" == *\"\$ip\"* ]]; then
         return 0
     else
