@@ -20,7 +20,7 @@
 
 # **Working Algorithm :**
 
-1.  Creates a virtual interface in a Linux system named ```eth-v``` and sets ```192.168.42.100``` as static ipv4, it will also act as master IP.
+1.  Creates a virtual interface in a Linux system named ```eth-v``` and sets ```192.168.234.100``` as static ipv4, it will also act as master IP.
 
 2.  The tethering service will run every 5 seconds and check if there is any ADB device connected to Linux.
 
@@ -28,11 +28,11 @@
 
 4.  If RNDIS mode is set then it will create ```android_rndis``` network interface in linux system.
 
-5.  Android Alcatel Tab defaults to creating ```192.168.42.129``` as a RNDIS gateway. Since it is an unrooted device, we cannot modify it, and that's why we are using the 42 series in the master IP.
+5. Tab defaults to creating ```192.168.234.87``` as a RNDIS gateway. Since it is an unrooted device, we cannot modify it, and that's why we are using the 234 subnet in the master IP.
 
 6.  If the Android tablet is disconnected and connected again, the service runs the same as before.
 
-7.  Android uses ```192.168.42.100``` as master IP.
+7.  Android uses ```192.168.234.100``` as master IP.
 
 # **Note :**
 1.  This method doesn't allow internet sharing from a PC to a tablet.
