@@ -52,8 +52,8 @@ install(){
     echo "#!/bin/bash" > $script_file
     echo "" >> $script_file
     echo "check_and_proceed() {
-    ip=\"192.168.42.150\"
-    gateway=\"192.168.42.129\"
+    ip=\"192.168.234.150\"
+    gateway=\"192.168.234.129\"
     devices=\$(adb devices | awk 'NR>1 {print $1}')
     if [ -z \"\$devices\" ]; then
         echo \"No devices found.\"
@@ -127,7 +127,7 @@ install(){
     modprobe dummy
     ip link add eth-v type dummy
     ifconfig eth-v hw ether C8:D7:4A:4E:47:50
-    ip addr add 192.168.42.100/24 brd + dev eth-v
+    ip addr add 192.168.234.100/24 brd + dev eth-v
     ip link set dev eth-v up
     ifmetric eth-v 7500000
 }" >> $script_file
