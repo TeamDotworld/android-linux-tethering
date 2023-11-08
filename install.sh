@@ -53,7 +53,7 @@ install(){
     echo "" >> $script_file
     echo "check_and_proceed() {
     ip=\"192.168.234.150\"
-    gateway=\"192.168.234.129\"
+    gateway=\"192.168.234.87\"
     devices=\$(adb devices | awk 'NR>1 {print $1}')
     if [ -z \"\$devices\" ]; then
         echo \"No devices found.\"
